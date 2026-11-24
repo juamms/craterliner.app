@@ -1,0 +1,167 @@
+/* Craterliner: one look, the game's sky. Always dark. */
+:root {
+  --sky: #000001;
+  --ink: #e9e8f2;
+  --ink-dim: #9d9cab;
+  --ink-faint: #6c6b78;
+  --rule: #24232c;
+  --button: #1b1b21;
+  --button-edge: #34333d;
+  --button-ink: #8d8c99;
+  --accent: #eeae42; /* the Standard's cockpit glass */
+  --placeholder: #ffcf66;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--sky); -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: var(--sky);
+  color: var(--ink);
+  font: 16px/1.55 var(--sans);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+a { color: var(--ink); text-underline-offset: 3px; text-decoration-color: var(--ink-faint); }
+a:hover { text-decoration-color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- Coming soon ---------- */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px 32px;
+  text-align: center;
+}
+
+.ship {
+  display: block;
+  width: min(52vw, 250px);
+  /* height set by ship.js from the drawing's tilted bounds; this keeps the space before it runs */
+  aspect-ratio: 1 / 1.2;
+  margin: 0 auto 8px;
+}
+
+.wordmark {
+  margin: 0;
+  font: 700 clamp(30px, 9vw, 64px)/1.05 var(--sans);
+  letter-spacing: 0.22em;
+  /* letter-spacing trails the last letter: pull it back so the word centres */
+  margin-right: -0.22em;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin: 14px 0 0;
+  color: var(--ink-dim);
+  font-size: clamp(15px, 4vw, 18px);
+  max-width: 28em;
+}
+
+.stores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.store {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 256px;
+  max-width: 100%;
+  padding: 9px 18px 10px;
+  border: 1px solid var(--button-edge);
+  border-radius: 10px;
+  background: var(--button);
+  color: var(--button-ink);
+  text-align: left;
+  cursor: not-allowed;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.store-name { font: 600 17px/1.2 var(--sans); color: #b1b0bd; }
+.store-note { font: 500 11px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.site-foot {
+  position: relative;
+  z-index: 1;
+  padding: 0 16px 28px;
+  text-align: center;
+  color: var(--ink-faint);
+  font: 12px/1.6 var(--mono);
+  letter-spacing: 0.06em;
+}
+.site-foot a { color: var(--ink-dim); }
+.site-foot .sep { margin: 0 0.6em; }
+
+/* ---------- Text pages ---------- */
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  flex: 1 0 auto;
+  padding: 40px 16px 48px;
+}
+
+.page-head { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
+.page-head a { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.page-head img { width: 34px; height: 34px; }
+.page-head .name { font: 700 15px/1 var(--sans); letter-spacing: 0.22em; text-transform: uppercase; }
+
+.page h1 { font-size: clamp(26px, 7vw, 34px); line-height: 1.15; margin: 0 0 6px; }
+.page h2 { font-size: 19px; margin: 32px 0 6px; }
+.page p, .page li { color: #cfcedb; }
+.page ul { padding-left: 1.2em; }
+.page .meta { color: var(--ink-faint); font: 13px/1.5 var(--mono); margin: 0 0 24px; }
+
+.draft {
+  border: 1px dashed var(--placeholder);
+  color: var(--placeholder);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font: 13px/1.5 var(--mono);
+  margin: 0 0 24px;
+}
+.placeholder {
+  color: var(--placeholder);
+  background: rgba(255, 207, 102, 0.1);
+  border-radius: 3px;
+  padding: 0 0.25em;
+  font-family: var(--mono);
+  font-size: 0.92em;
+}
+
+.lost { text-align: center; }
+.lost img { width: 120px; height: auto; margin: 8px auto 20px; display: block; }
